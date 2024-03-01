@@ -63,7 +63,7 @@ app.use('/upload', require('./routers/UploadRouter.js'))
 
 
 app.get('/',(req, res) => {
-    res.send('Welcome to blog for everyone!')
+    res.send('Welcome to this agricultural product Mall for everyone!')
 })
 
 app.listen(port, ()=>{

@@ -1,10 +1,12 @@
 <template>
     <div>
       <WelcomeItem></WelcomeItem>
-      <nav>
-        <RouterLink to="/login" class="cheNav">登录注册 <el-icon class="icon"><QuestionFilled /></el-icon></RouterLink>
-        <RouterLink to="/about" class="cheNav">关于此网站<el-icon class="icon"><Right /></el-icon></RouterLink>
-      </nav>
+      <div class="choose">
+         <nav>
+          <RouterLink to="/login" class="cheNav">登录注册<el-icon class="icon"><Right /></el-icon></RouterLink>
+          <RouterLink to="/about" class="cheNav">关于此网站<el-icon class="icon"><QuestionFilled /></el-icon></RouterLink>
+          </nav>
+      </div>
     </div>
 </template>
 <script setup>
@@ -16,8 +18,9 @@ import WelcomeItem from '@/components/WelcomeItem.vue'
 
 <style lang="scss" scoped>
 
-  nav {
-    margin-left: 300px;
+  .choose {
+    position: relative;
+    left: 60%;
     .cheNav {
       cursor: pointer;
       border-radius: 5px;
@@ -29,8 +32,5 @@ import WelcomeItem from '@/components/WelcomeItem.vue'
         padding-top: 10px;
       }
     }
-    .cheNav :hover {
-      background-color: green;
-     }
   }
 </style>

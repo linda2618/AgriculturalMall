@@ -12,15 +12,17 @@
 
 <style lang="scss" scoped>
 .box {
+  width: 100%;
 
   .item {
-    margin: 200px auto 50px;
+    margin-top: 200px;
     transform: translate(50%);
-    font-size: 28px;
+    font-size: 25px;
 
     span {
-      font-size: 18px;
-      color: #ccc;
+      margin-top: 30px;
+      font-size: 15px;
+      
     }
   }
 }

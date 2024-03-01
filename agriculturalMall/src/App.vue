@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <HomeView></HomeView>
-    <RouterView />
+  <div class="app">
+    <div class="box">
+      <RouterView />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { RouterView } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
 
 </script>
 
