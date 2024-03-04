@@ -56,10 +56,10 @@ app.all('*', async(req, res, next) => {
 })
 //注册router
 app.use('/test', require('./routers/TestRouter.js'))
-app.use('/admin', require('./routers/AdminRouter.js'))
-app.use('/category', require('./routers/CategoryRouter.js'))
-app.use('/blog', require('./routers/BlogRouter.js'))
-app.use('/upload', require('./routers/UploadRouter.js'))
+// app.use('/admin', require('./routers/AdminRouter.js'))
+// app.use('/category', require('./routers/CategoryRouter.js'))
+// app.use('/blog', require('./routers/BlogRouter.js'))
+// app.use('/upload', require('./routers/UploadRouter.js'))
 
 
 app.get('/',(req, res) => {
