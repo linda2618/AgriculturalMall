@@ -2,9 +2,10 @@ import axios from 'axios'
 import { useStore } from 'vuex'
 
 const store = useStore()
+
 // 创建实例
 const request = axios.create({
-    baseURL: "http://127.0.0.1:8080/api/",
+    baseURL: "http://localhost:8080",
     timeout: 2000,
     headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -13,13 +14,9 @@ const request = axios.create({
 
 // 请求拦截
 axios.interceptors.request.use((config) => {
-  config.headers.tokens = store.commit('tokens')
+  config.headers.tokens = store.state.adminInfo.token
   return config
 })
 
-//响应拦截
-axios.interceptors.response.use(
-    (res) => {
-       
-    }
-)
+
+export default request
