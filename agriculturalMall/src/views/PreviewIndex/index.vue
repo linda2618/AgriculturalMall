@@ -4,7 +4,7 @@
         <el-scrollbar>
         <!-- :default-openeds="['1']" -->
             <el-menu>
-            <el-menu-item index="1"><el-icon><Menu /></el-icon>首页</el-menu-item>
+            <el-menu-item index="1" @click="goMenu"><el-icon><Menu /></el-icon>首页</el-menu-item>
             <el-sub-menu index="2">
                 <template #title>
                 <el-icon><Tickets /></el-icon>农产品
@@ -35,15 +35,70 @@
             </el-menu>
         </el-scrollbar>
       </el-aside>
-    <el-container>
-    <el-header>Header</el-header>
-    <el-main>Main</el-main>
-    </el-container>
+        <el-container>
+        <!-- 头部固定 -->
+        <el-header class="header">
+                <div @click="goShop"><el-icon><ShoppingTrolley /></el-icon>购物车</div>
+                <div @click="goCollect"><el-icon><CollectionTag /></el-icon>收藏夹</div>
+                <div @click="goProfile"><el-icon><User /></el-icon>个人信息</div>
+                <div @click="goConnect"><el-icon><InfoFilled /></el-icon>
+                <el-dropdown>
+                    <span class="drewLink">
+                    联系我们
+                    <el-icon class="el-icon--right">
+                        <arrow-down />
+                    </el-icon>
+                    </span>
+                    <template #dropdown>
+                    <el-dropdown-menu>
+                        <el-dropdown-item>人工客服</el-dropdown-item>
+                        <el-dropdown-item>意见反馈</el-dropdown-item>
+                    </el-dropdown-menu>
+                    </template>
+                </el-dropdown>
+            </div>
+        </el-header>
+        <!-- 主体部分嵌入组件 -->
+        <el-main class="main">
+            <!-- currentTab 改变时组件也改变 -->
+            <component :is="currentComponent"></component>
+        </el-main>
+        </el-container>
     </el-container>
 </template>
 
 
 <script setup>
+import { ref, shallowRef, reactive } from 'vue'
+import AllPreview from './AllPreview.vue'
+import ShoppingCar from './ShoppingCar.vue'
+import Collect from './Collect.vue'
+import YouProfile from './YouProfile.vue'
+import Connention from './Connention.vue'
+
+const currentComponent = shallowRef(AllPreview)
+
+
+// 点击头部，切换组件
+const goShop = () => {
+    currentComponent.value = ShoppingCar
+    console.log('111')
+}
+const goCollect = () => {
+    currentComponent.value = Collect
+    console.log('222')
+    
+}
+const goProfile = () => {
+    currentComponent.value = YouProfile
+}
+const goConnect = () => {
+    currentComponent.value = Connention
+}
+// 回到首页浏览
+const goMenu = () => {
+    currentComponent.value = AllPreview
+}
 
 </script>
 
@@ -51,5 +106,25 @@
 
 .container {
     width: 100%;
+}
+ 
+.header {
+    display: flex;
+    font-size: 12px;
+    position: fixed;
+
+    div, .container {
+        font-size: 12px;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+    div:hover {
+        color: hsla(160, 100%, 37%, 1);
+
+    }
+}
+
+.main {
+    margin-top: 30px;
 }
 </style>
