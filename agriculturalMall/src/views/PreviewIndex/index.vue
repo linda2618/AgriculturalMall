@@ -110,8 +110,12 @@ const goMenu = () => {
  
 .header {
     display: flex;
+    background-color: #f8f8f8;
+    width: 100%;
     font-size: 12px;
+    padding-top: 20px;
     position: fixed;
+    z-index: 100;
 
     div, .container {
         font-size: 12px;

@@ -22,8 +22,13 @@ const router = createRouter({
     {
       path: '/preview',
       name: 'preview',
-      component: () => import('../views/PreviewIndex/index.vue')
-    }
+      component: () => import('../views/PreviewIndex/index.vue'),
+    },
+     {
+        path: '/productDetail',
+        name: 'productDetail',
+        component: () => import('../views/PreviewIndex/ProductDetail.vue'),
+      }
   ]
 })
 
