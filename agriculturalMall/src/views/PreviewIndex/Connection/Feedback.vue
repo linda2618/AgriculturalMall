@@ -1,6 +1,6 @@
 <template>
     <div>
-        联系我们
+        意见反馈
     </div>
 </template>
 

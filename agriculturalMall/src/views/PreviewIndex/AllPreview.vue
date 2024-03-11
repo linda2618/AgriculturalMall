@@ -129,6 +129,7 @@ const changeCount = (e) => {
 
 //商品详情 (假数据)
 const detailInfo = reactive({
+    id: '1',
     title: '新鲜大白菜',
     content: "今日特价新鲜大白菜,便宜卖不要99.9也不要9.99,只要5.9!!!只要5.9!!!只要5.9!!!",
     price: "6",
@@ -139,10 +140,10 @@ const detailInfo = reactive({
 
 // 进入详情页
 const goDetail = () => {
-    console.log(detailInfo, '跳转前detaillinfo')
+    console.log(detailInfo.id, '跳转前detaillinfo')
       router.push({
         path: '/productDetail',
-        query: {...detailInfo},
+        query: {id: detailInfo.id},
     })
 }
 </script>

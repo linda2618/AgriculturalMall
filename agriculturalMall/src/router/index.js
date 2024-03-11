@@ -23,6 +23,42 @@ const router = createRouter({
       path: '/preview',
       name: 'preview',
       component: () => import('../views/PreviewIndex/index.vue'),
+      children: [
+        {
+          path: '/preview/shopCar',
+          name: 'shopCar',
+          component: () => import('../views/PreviewIndex/ShoppingCar.vue')
+        },
+        {
+          path: '/preview/collect',
+          name: 'collect',
+          component: () => import('../views/PreviewIndex/Collect.vue')
+        },
+        {
+          path: '/preview/profile',
+          name: 'profile',
+          component: () => import('../views/PreviewIndex/YouProfile.vue')
+        },
+        {
+          path: '/preview/connect',
+          name: 'connect',
+          direction: '/preview/connect/manService',
+          component: () => import('../views/PreviewIndex/Connection/ManService.vue'),
+          children: [
+            {
+              path: '/preview/connect/manService',
+              name: 'manService',
+              component: () => import('../views/PreviewIndex/Connection/ManService.vue'),
+            },
+            {
+              path: '/preview/connect/feedback',
+              name: 'feedback',
+              component: () => import('../views/PreviewIndex/Connection/Feedback.vue'),
+            },
+          ]
+        },
+
+      ]
     },
      {
         path: '/productDetail',
