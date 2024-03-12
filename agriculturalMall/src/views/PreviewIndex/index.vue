@@ -74,7 +74,8 @@ import AllPreview from './AllPreview.vue'
 import ShoppingCar from './ShoppingCar.vue'
 import Collect from './Collect.vue'
 import YouProfile from './YouProfile.vue'
-import Connention from './Connention.vue'
+import Feedback from './Connection/Feedback.vue'
+import ManService from './Connection/ManService.vue'
 
 const currentComponent = shallowRef(AllPreview)
 
@@ -92,9 +93,11 @@ const goCollect = () => {
 const goProfile = () => {
     currentComponent.value = YouProfile
 }
-const goConnect = () => {
-    currentComponent.value = Connention
-}
+
+//客服联系
+// const goConnect = () => {
+//     currentComponent.value = Connention
+// }
 // 回到首页浏览
 const goMenu = () => {
     currentComponent.value = AllPreview

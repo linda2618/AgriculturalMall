@@ -48,15 +48,17 @@ const goConnect = () => {
 <style lang="scss" scoped>
 .com_header {
     width: 100%;
+    position: fixed;
+    background-color: #f8f8f8;
+
 
     .header {
+        width: 70%;
+        margin: 0 auto;
         display: flex;
         justify-content: end;
-        background-color: #f8f8f8;
-        width: 100%;
         font-size: 11px;
         padding: 5px 0;
-        position: fixed;
         z-index: 100;
 
         div, .container {

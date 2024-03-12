@@ -20,7 +20,7 @@ import WelcomeItem from '@/components/WelcomeItem.vue'
 
   .choose {
     position: relative;
-    left: 60%;
+    left: 56%;
     .cheNav {
       cursor: pointer;
       border-radius: 5px;
