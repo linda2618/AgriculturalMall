@@ -3,7 +3,7 @@
         <!-- 头部固定 -->
         <div class="header">
                 <div @click="goShop"><el-icon><ShoppingTrolley /></el-icon>购物车</div>
-                <div @click="goCollect"><el-icon><CollectionTag /></el-icon>收藏夹</div>
+                <div @click="goCollect"><el-icon><Star /></el-icon><el-icon><StarFilled /></el-icon>收藏夹</div>
                 <div @click="goProfile"><el-icon><User /></el-icon>个人信息</div>
                 <div @click="goConnect"><el-icon><InfoFilled /></el-icon>
                 <el-dropdown>

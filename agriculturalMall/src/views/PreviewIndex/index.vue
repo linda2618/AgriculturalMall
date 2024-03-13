@@ -1,4 +1,5 @@
 <template>
+    <!-- 主页，侧边栏+头部导航 -->
     <el-container class="container">
       <el-aside width="160px">
         <el-scrollbar>
@@ -39,9 +40,9 @@
         <!-- 头部固定 -->
         <el-header class="header">
                 <div @click="goShop"><el-icon><ShoppingTrolley /></el-icon>购物车</div>
-                <div @click="goCollect"><el-icon><CollectionTag /></el-icon>收藏夹</div>
+                <div @click="goCollect"><el-icon><Star /></el-icon>收藏夹</div>
                 <div @click="goProfile"><el-icon><User /></el-icon>个人信息</div>
-                <div @click="goConnect"><el-icon><InfoFilled /></el-icon>
+                <div><el-icon><InfoFilled /></el-icon>
                 <el-dropdown>
                     <span class="drewLink">
                     联系我们
@@ -51,18 +52,18 @@
                     </span>
                     <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item>人工客服</el-dropdown-item>
-                        <el-dropdown-item>意见反馈</el-dropdown-item>
+                        <el-dropdown-item @click="goManService">人工客服</el-dropdown-item>
+                        <el-dropdown-item @click="goFeedback">意见反馈</el-dropdown-item>
                     </el-dropdown-menu>
                     </template>
                 </el-dropdown>
             </div>
         </el-header>
         <!-- 主体部分嵌入组件 -->
-        <el-main class="main">
+        <div class="main">
             <!-- currentTab 改变时组件也改变 -->
             <component :is="currentComponent"></component>
-        </el-main>
+        </div>
         </el-container>
     </el-container>
 </template>
@@ -94,10 +95,16 @@ const goProfile = () => {
     currentComponent.value = YouProfile
 }
 
-//客服联系
-// const goConnect = () => {
-//     currentComponent.value = Connention
-// }
+// 客服联系
+const goManService = () => {
+    currentComponent.value = ManService
+}
+
+const goFeedback = () => {
+    currentComponent.value = Feedback
+}
+
+
 // 回到首页浏览
 const goMenu = () => {
     currentComponent.value = AllPreview
@@ -115,8 +122,9 @@ const goMenu = () => {
     display: flex;
     background-color: #f8f8f8;
     width: 100%;
+    height: 30px;
     font-size: 12px;
-    padding-top: 20px;
+    padding-top: 8px;
     position: fixed;
     z-index: 100;
 

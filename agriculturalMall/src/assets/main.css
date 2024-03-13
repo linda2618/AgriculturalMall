@@ -1,5 +1,5 @@
 #app {
-  max-width: 1280px;
+  min-width: 750px;
   margin: 0;
   padding: 0;
   font-weight: normal;
@@ -15,6 +15,12 @@ a,
   transition: 0.4s;
   padding: 3px;
 }
+
+.w {
+  width: 80%;
+  margin: 0 auto;
+}
+
 
 @media (hover: hover) {
   a:hover {

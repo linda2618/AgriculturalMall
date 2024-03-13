@@ -1,4 +1,5 @@
 <template>
+    <!-- 主页，默认页面 -->
     <div class="preview">
         <!-- 搜索部分 -->
         <div class="search">
@@ -15,23 +16,23 @@
         <!-- 图片轮播 -->
         <div class="image">
             <span class="title">特价大甩卖</span>
-            <div class="block text-center" m="t-4">
+            <div class="carousel">
                 <el-carousel :interval="4000"
                     indicator-position="none"
                     type="card"
                     height="200px"
                     @change="changeCount"
                 >
-                        <el-carousel-item v-for="item in urls" :key="item">
-                            <h3 text="2xl"
-                                justify="center">
+                        <el-carousel-item v-for="item in urls" :key="item" height="400px">
+                            <h3
+                                justify="end">
                                 <el-image
                                     :src="item.img"
                                     alt=""
                                     srcset=""
                                     class="carousel-image"
-                                    style="height: 300px; width: 400px;"
-                                    justify="center"
+                                    style="height: 300px;"
+                                    justify="end"
                                 />
                             </h3>
                         </el-carousel-item>
@@ -57,7 +58,7 @@
         <div class="guess_main">
             <div
                 class="guess_card"
-                v-for="item in 6"
+                v-for="item in 12"
             >
                 <PreviewCard
                     :dataSrc="p3"
@@ -70,11 +71,14 @@
             
         </div>
 
+        <!-- 侧边固定tab -->
+        <FixedAside v-show="showAside"></FixedAside>
+
     </div>
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router';
 
 import p1 from  '@/assets/images/1.png'
@@ -85,9 +89,11 @@ import p5 from  '@/assets/images/5.png'
 import p6 from '@/assets/images/6.png'
 import xi from '@/assets/images/xi.png'
 import PreviewCard from '@/components/previewCard.vue'
+import FixedAside from '@/components/fixedAside.vue'
 
 const router = useRouter()
 const keyword = ref('')
+const showAside = ref(false)
 
 // 引入本地图片
 const urls = reactive([
@@ -146,6 +152,28 @@ const goDetail = () => {
         query: {id: detailInfo.id},
     })
 }
+
+//监听窗口大小，控制侧边栏 显示/隐藏
+let scrollTop = ref({ top:  document.documentElement.scrollTop });
+
+const handleScroll = () => {
+  // 获取滚动条的位置或滚动的距离
+    scrollTop.value.top = document.documentElement.scrollTop;
+    // console.log(scrollTop.value.top, 'top!!')
+    if (scrollTop.value.top >= 520) {
+        showAside.value = true;
+        return;
+    }
+    showAside.value = false;
+};
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+});
+
+onBeforeUnmount(() => {
+    window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <style lang="scss" scoped>
@@ -156,7 +184,6 @@ const goDetail = () => {
     .search {
         width: 100%;
         height: 100px;
-        // background-color:rgba(247, 249, 250);
 
         .search_input, 
         .search_button {
@@ -168,17 +195,21 @@ const goDetail = () => {
 }
 
 .image {
+    width: 1200px;  
     margin-top: 40px;
 
     .title {
         font-size: 20px;;
+    }
+
+    .carousel-image {
+        width: 580px;
     }
     
     .carousel_text {
         display: flex;
         justify-content: space-around;
     }
- 
 }
 
 .guess_title {
@@ -196,6 +227,8 @@ const goDetail = () => {
 .guess_main {
     display: flex;
     flex-wrap: wrap;
+    background-color:rgba(241, 239, 237);
+
 
     .guess_card {
         margin-right: 20px;
