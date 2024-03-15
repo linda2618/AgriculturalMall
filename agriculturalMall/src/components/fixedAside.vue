@@ -6,7 +6,7 @@
             <div @click="goShop"><el-icon><ShoppingTrolley /></el-icon>购物车</div>
             <div @click="goProfile"><el-icon><Edit /></el-icon>反馈</div>
             <div @click="goProfile"><el-icon><User /></el-icon>客服</div>
-            <div @click="goConnect"><el-icon><Top /></el-icon>回顶部</div>
+            <div><el-icon><Top /></el-icon>回顶部</div>
         </div>
     </div>
 </template>

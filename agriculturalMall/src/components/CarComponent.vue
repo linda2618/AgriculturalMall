@@ -1,51 +1,44 @@
 <template>
-  <el-tree-v2
-    style="max-width: 600px"
-    :data="data"
-    :props="props"
-    show-checkbox
-    :height="208"
-  />
+  <el-checkbox
+    v-model="checkAll"
+    :indeterminate="isIndeterminate"
+    @change="handleCheckAllChange"
+    >全选</el-checkbox
+  >
+  <el-checkbox-group
+    v-model="checkedCities"
+    @change="handleCheckedCitiesChange"
+  >
+    <el-checkbox
+      v-for="city in cities"
+      :key="city"
+      :label="city"
+      :value="city"
+      >
+      <div>
+      {{ city }}
+      <span>123121312</span>
+      </div>   
+      </el-checkbox
+    >
+  </el-checkbox-group>
 </template>
-<script lang="ts" setup>
-interface Tree {
-  id: string
-  label: string
-  children?: Tree[]
-}
 
-const getKey = (prefix: string, id: number) => {
-  return `${prefix}-${id}`
-}
+<script setup>
+import { ref } from 'vue'
 
-const createData = (
-  maxDeep: number,
-  maxChildren: number,
-  minNodesNumber: number,
-  deep = 1,
-  key = 'node'
-): Tree[] => {
-  let id = 0
-  return Array.from({ length: minNodesNumber })
-    .fill(deep)
-    .map(() => {
-      const childrenNumber =
-        deep === maxDeep ? 0 : Math.round(Math.random() * maxChildren)
-      const nodeKey = getKey(key, ++id)
-      return {
-        id: nodeKey,
-        label: nodeKey,
-        children: childrenNumber
-          ? createData(maxDeep, maxChildren, childrenNumber, deep + 1, nodeKey)
-          : undefined,
-      }
-    })
-}
+const checkedCities = ref(['Shanghai', 'Beijing'])
+const cities = ['Shanghai', 'Beijing', 'Guangzhou', 'Shenzhen']
 
-const props = {
-  value: 'id',
-  label: 'label',
-  children: 'children',
+const handleCheckAllChange = (val) => {
+  checkedCities.value = val ? cities : []
+  isIndeterminate.value = false
 }
-const data = createData(4, 30, 40)
+const handleCheckedCitiesChange = (value) => {
+  const checkedCount = value.length
+  checkAll.value = checkedCount === cities.length
+  isIndeterminate.value = checkedCount > 0 && checkedCount < cities.length
+}
 </script>
+
+<style lang="scss" scoped></style>
