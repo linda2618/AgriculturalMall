@@ -20,7 +20,10 @@ a,
   width: 80%;
   margin: 0 auto;
 }
-
+.red {
+  color: red;
+  font-size: 16px;
+}
 
 @media (hover: hover) {
   a:hover {
@@ -38,3 +41,7 @@ a,
     padding: 0 2rem;
   }
 } */
+
+.divider {
+  border-top: 1px solid #bababa;
+}
